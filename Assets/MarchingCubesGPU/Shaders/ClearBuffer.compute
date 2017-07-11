@@ -1,0 +1,38 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+struct Vert
+{
+	float4 position;
+	float3 normal;
+};
+
+RWStructuredBuffer<Vert> _Buffer;
+
+int _Width, _Height, _Depth;
+
+[numthreads(8,8,8)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	int idx = id.x + id.y * _Width + id.z * _Width * _Height;
+
+	//Clears the position which was set the previous run.
+	//Does not matter to what as long as x,y,z are all the same 
+	//so vert shader will discard triangle as degenerate and not draw
+	//if not filled again.
+
+	//The mesh read back code treats verts with a -1 for w position
+	//as blank. Thats why Im using -1s.
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			Vert vert;
+			vert.position = float4(-1,-1,-1,-1);
+			vert.normal = float3(0,0,0);
+
+			_Buffer[idx * 15 + (3 * i + j)] = vert;
+		}
+	}
+}
