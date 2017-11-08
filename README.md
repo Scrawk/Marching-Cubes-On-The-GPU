@@ -10,6 +10,6 @@ Using a buffer does present some issues. The buffer has to be a fixed size but t
 
 I have also added a stage to generate the smoothed normals by using the derivatives of the voxel values and interpolating them based on the vertices position. There is also a second scene that generates a new mesh every frame using 4D Perlin noise to make a animated voxel mesh.
 
-See [home page](https://www.digital-dust.com/single-post/2017/07/10/Marching-cubes-on-the-GPU-in-Unity) for more information.
+See [home page](https://www.digital-dust.com/single-post/2017/07/10/Marching-cubes-on-the-GPU-in-Unity) for more information and unity package download.
 
 ![Marching Cubes GPU](https://static.wixstatic.com/media/1e04d5_6d24bd1c351a4136b87d63351bc4b1d0~mv2.jpg/v1/fill/w_550,h_550,al_c,q_80,usm_0.66_1.00_0.01/1e04d5_6d24bd1c351a4136b87d63351bc4b1d0~mv2.jpg)
